@@ -4,6 +4,9 @@ jobs:
   build:
     docker:
       - image: cimg/node:14.0.1
+        auth:
+          username: hoangphu98
+          password: HoangPhu98@
     steps:
       - checkout 
       - run: echo "hello world"
