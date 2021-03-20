@@ -18,8 +18,6 @@ jobs:
       - run:
           name: Build and push Docker image
           command: |
-            . helloworld/bin/activate
-            pyinstaller -F helloworld.py
             docker build -t hoangphu98/$IMAGE_NAME:$TAG .
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
             docker push hoangphu98/$IMAGE_NAME:$TAG
