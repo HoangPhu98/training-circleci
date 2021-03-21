@@ -4,7 +4,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.24-buster-browser-legacy
+      - image: circleci/node:12.21-buster
     steps:
       - checkout
       - run:
