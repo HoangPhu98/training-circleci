@@ -1,20 +1,23 @@
-
 version: 2
 
 jobs:
   build:
+    docker:
+      - image: circleci/python:2.7.14
+        environment:
+          FLASK_CONFIG: testing
     steps:
       - checkout
       - run:
-          name: Setup Env
+          name: Setup VirtualEnv
           command: |
             echo 'export TAG=0.1.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
-            echo 'export IMAGE_NAME=pnode_circle' >> $BASH_ENV
+            echo 'export IMAGE_NAME=python-circleci-docker' >> $BASH_ENV
       - setup_remote_docker:
           docker_layer_caching: false
       - run:
           name: Build and push Docker image
           command: |
-            docker build -t hoangphu98/$IMAGE_NAME:$TAG ./js/
+            docker build -t hoangphu98/$IMAGE_NAME:$TAG ./python
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
             docker push hoangphu98/$IMAGE_NAME:$TAG
