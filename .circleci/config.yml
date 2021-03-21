@@ -17,6 +17,6 @@ jobs:
       - run:
           name: Build and push Docker image
           command: |
-            docker build -t hoangphu98/$IMAGE_NAME:$TAG ./js/
+            docker build -t hoangphu98/$IMAGE_NAME:$TAG ./js
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
             docker push hoangphu98/$IMAGE_NAME:$TAG
