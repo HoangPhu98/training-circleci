@@ -3,9 +3,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node@4.2.0
+      - image: circleci/python:2.7.14
         environment:
-          NODE_CONFIG: testing
+          FLASK_CONFIG: testing
     steps:
       - checkout
       - run:
